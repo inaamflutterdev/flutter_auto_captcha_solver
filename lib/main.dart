@@ -1,7 +1,11 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'dart:math';
 
 class CaptchaWidget extends StatefulWidget {
+  const CaptchaWidget({super.key});
+
   @override
   _CaptchaWidgetState createState() => _CaptchaWidgetState();
 }
@@ -46,20 +50,22 @@ class _CaptchaWidgetState extends State<CaptchaWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
+        const Text(
           'CAPTCHA:',
           style: TextStyle(fontSize: 20),
         ),
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.blue,
-
           ),
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
               expression,
-              style: TextStyle(fontSize: 24,fontFamily: 'Muddy Screen IBM VGA',color: Colors.white),
+              style: const TextStyle(
+                  fontSize: 24,
+                  fontFamily: 'Muddy Screen IBM VGA',
+                  color: Colors.white),
             ),
           ),
         ),
@@ -67,18 +73,13 @@ class _CaptchaWidgetState extends State<CaptchaWidget> {
           onChanged: (input) {
             if (int.tryParse(input) == result) {
               isEnabled = true;
-              setState(() {
-
-              });
+              setState(() {});
               // ScaffoldMessenger.of(context).showSnackBar(
               //   SnackBar(content: Text('CAPTCHA Correct!')),
               // );
-            }
-            else {
+            } else {
               isEnabled = false;
-setState(() {
-  
-});
+              setState(() {});
             }
           },
         ),
@@ -86,10 +87,8 @@ setState(() {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ElevatedButton(
-              onPressed: isEnabled ? () {
-
-              }:null,
-              child: Text('Confirm'),
+              onPressed: isEnabled ? () {} : null,
+              child: const Text('Confirm'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -97,7 +96,7 @@ setState(() {
                   generateCaptcha();
                 });
               },
-              child: Text('Refresh CAPTCHA'),
+              child: const Text('Refresh CAPTCHA'),
             ),
           ],
         ),
@@ -111,9 +110,9 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('CAPTCHA Widget'),
+          title: const Text('CAPTCHA Widget'),
         ),
-        body: Center(
+        body: const Center(
           child: CaptchaWidget(),
         ),
       ),
